@@ -1,72 +1,32 @@
-# Linux Environment Settings
+# My Linux Setup
 
-This repository serves as a personal archive for configuration files and setup notes for my Linux environment. The goal is to easily replicate my preferred setup on new or fresh Linux systems.
+This repository holds the configuration files and setup script for my personal Linux environment. It's a simple way for me to quickly get up and running on a new machine.
 
-## Overview
+## What's inside?
 
-This collection currently includes settings and references for:
+*   **A slick terminal experience:** I use [Ghostty](https://ghostty.org/) as my terminal, with the `GitHub-Dark-High-Contrast` theme and the `MesloLGS NF` font. It's clean, fast, and looks great.
+*   **A powerful shell:** My shell is powered by [Zsh](https://www.zsh.org/), [Oh My Zsh](https://ohmyz.sh/), and the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. This combination gives me a powerful, customizable, and beautiful command line.
+*   **Essential tools:** I've included a few of my favorite command-line tools:
+    *   `fzf`: A command-line fuzzy finder that's great for finding files and searching through history.
+    *   `ai-shell`: An AI assistant for the command line.
+*   **Speech-to-text scripts:** A set of scripts to control [SpeechNote](https://flathub.org/apps/net.mkiol.SpeechNote) for transcription.
 
-* **Shell:** Zsh, with history indicating the use of Oh My Zsh and the Powerlevel10k theme.
-* **Terminal Emulator:** Ghostty, with specific theme and font configurations.
-* **Fonts:** References to MesloLGS NF, a font often paired with Powerlevel10k.
-* **Tools:** Command history related to `fzf`, `conda`, `ai-shell`, and `gptree`.
+## How to use it
 
-## Key Configurations & Setup Notes
+To set up a new machine with my configuration, you can run the `setup.sh` script. This will install all the necessary tools and copy the configuration files to the correct locations.
 
-### Terminal (Ghostty)
+```bash
+./setup.sh
+```
 
-* **Configuration File:** `.config/ghostty/config`
-* **Theme:** `GitHub-Dark-High-Contrast`
-* **Font:** `"MesloLGS NF"`
-* **Font Size:** `11.0`
-* **Custom Keybind:** `alt+a=toggle_tab_overview`
+After running the script, you'll need to restart your shell for the changes to take effect.
 
-This configuration indicates a preference for the Ghostty terminal emulator with the MesloLGS NF font.
+## My dotfiles
 
-### Shell (Zsh)
+This repository also includes my personal dotfiles:
 
-The `.zsh_history` file provides a log of commands, which can be useful for recalling setup steps. Key items identified include:
+*   `.zshrc`: My Zsh configuration file.
+*   `.ai-shell`: The configuration file for `ai-shell`.
+*   `.config/ghostty/config`: The configuration file for the Ghostty terminal.
 
-* **Oh My Zsh & Powerlevel10k:**
-    * Powerlevel10k installation:
-        ```bash
-        git clone --depth=1 [https://github.com/romkatv/powerlevel10k.git](https://github.com/romkatv/powerlevel10k.git) ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-        ```
-    * Configuration typically done via `p10k configure`.
-* **MesloLGS NF Font Installation:**
-    Commands for downloading MesloLGS NF fonts (Regular, Bold, Italic, Bold Italic) into `~/.local/share/fonts` and updating the font cache (`fc-cache -f -v`). These fonts are recommended for Powerlevel10k.
-    ```bash
-    # Example commands from history:
-    mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts
-    curl -fLO [https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
-    # ... (similar for Bold, Italic, Bold Italic)
-    fc-cache -f -v
-    cd ~
-    ```
-* **fzf (Command-line fuzzy finder):**
-    * Installation:
-        ```bash
-        git clone --depth 1 [https://github.com/junegunn/fzf.git](https://github.com/junegunn/fzf.git) ~/.fzf
-        ~/.fzf/install
-        ```
-* **ai-shell (AI for the command line):**
-    * Installation (globally via npm):
-        ```bash
-        sudo npm install -g @builder.io/ai-shell
-        ```
-    * Configuration history shows setup for Ollama, e.g.:
-        ```bash
-        ai config set AI_PROVIDER ollama
-        ai config set OPENAI_API_ENDPOINT http://localhost:11434/v1 # or a remote Ollama instance
-        ai config set OPENAI_KEY=ollama
-        ai config set MODEL=gemma3:27b # Example model
-        ```
-* **Aliases:**
-    * Example: `alias gs='git status'` added to `~/.zshrc`.
-
-**Note:** The actual `.zshrc` file, which contains the active Zsh configuration (aliases, functions, Oh My Zsh settings, Powerlevel10k theme activation), is not currently part of this repository. Adding it would be beneficial for a more complete backup.
-
-### Default Terminal (GNOME)
-
-The `.zsh_history` includes commands for setting Ghostty as the default terminal application
+Feel free to browse the files and use whatever you find useful!
